@@ -3,11 +3,42 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux'
+import store from './Redux/store';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  redirect,
+} from "react-router-dom";
+import Login from './components/Login';
+
+
+const loader = async () => {
+  const user=true;
+  if (!user) {
+    return redirect("/login");
+  }
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    loader:loader
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 

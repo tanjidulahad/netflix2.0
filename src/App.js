@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { connect } from "react-redux"
+import HomeScreen from "./components/HomeScreen";
+import { decrement, increment } from "./Redux/Counter/counter-actions";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <HomeScreen/>
     </div>
   );
 }
 
+// const mapStateToProps = state => ({
+//   counter:state.counter.counter
+// })
+
+// const mapDispatchToProps=dispatch=>({
+//   increment:()=>dispatch(increment()),
+//   decrement:()=>dispatch(decrement())
+// })
+
+
+// export default connect(mapStateToProps,mapDispatchToProps)(App);
 export default App;
