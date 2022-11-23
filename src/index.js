@@ -12,24 +12,23 @@ import {
   redirect,
 } from "react-router-dom";
 import Login from './components/Login';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './Firebase/firebase.config';
+import ProfileScreen from './components/ProfileScreen';
 
-
-const loader = async () => {
-  const user=true;
-  if (!user) {
-    return redirect("/login");
-  }
-};
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    loader:loader
   },
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/profile",
+    element: <ProfileScreen />,
   },
 ]);
 
